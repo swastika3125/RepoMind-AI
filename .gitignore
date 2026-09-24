@@ -1,19 +1,36 @@
 # Python
-backend/venv/
-backend/__pycache__/
+__pycache__/
 *.pyc
-
-# Environment variables
-backend/.env
-.env
+*.pyo
+*.pyd
+venv/
+.venv/
+env/
 
 # React / Node
-frontend/node_modules/
-frontend/dist/
+node_modules/
+dist/
+build/
+
+# Environment variables
+.env
+*.env
+backend/.env
+frontend/.env
 
 # IDE
 .vscode/
+.idea/
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+
+# Vector databases / generated data
+chroma/
+data/
+backend/data/
+*.sqlite3

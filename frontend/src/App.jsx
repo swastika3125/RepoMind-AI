@@ -1,30 +1,27 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+﻿import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import About from "./pages/About";
 
 function App() {
-  const [backendMessage, setBackendMessage] = useState("Connecting...");
-
-  useEffect(() => {
-    axios
-      .get("http://127.0.0.1:5000/api/health")
-      .then((response) => {
-        setBackendMessage(response.data.message);
-      })
-      .catch(() => {
-        setBackendMessage("Backend connection failed");
-      });
-  }, []);
-
   return (
-    <div>
-      <h1>RepoMind AI</h1>
-      <p>AI-Powered GitHub Repository Intelligence Platform</p>
-
-      <hr />
-
-      <h2>Backend Status</h2>
-      <p>{backendMessage}</p>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
